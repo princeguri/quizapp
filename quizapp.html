@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="quzapp.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quizapp</title>
+</head>
+<style>
+    /* * {
+        padding: 0px;
+        margin: 0px;
+        box-sizing: border-box;
+    }
+
+    .box {
+        min-height: 300px;
+        width: 800px;
+        background-color: wheat;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 10px; 
+    }
+    
+
+    .size {
+        height: 40px;   
+        width: 100%;
+    }
+
+    body {
+        height: 100vh;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    
+
+    button {
+        height: 34px;
+        font-size: larger;
+        border-radius: 10px;
+    }
+
+    button:hover {
+        animation: ani 1s linear infinite;
+    }
+
+    @keyframes ani {
+        10% {
+            background: linear-gradient(red, #0ef);
+        }
+
+        20% {
+            background: linear-gradient(#0ef, red)
+        }
+
+        30% {
+            background: linear-gradient(red, #0ef)
+        }
+
+        40% {
+            background: linear-gradient(#0ef, red)
+        }
+
+        50% {
+            background: linear-gradient(red, #0ef)
+        }
+
+        60% {
+            background: linear-gradient(#0ef, red)
+        }
+
+        70% {
+            background: linear-gradient(red, #0ef)
+        }
+
+        85% {
+            background: linear-gradient(#0ef, red)
+        }
+
+        90% {
+            background: linear-gradient(red, #0ef)
+        }
+
+        100% {
+            background: linear-gradient(#0ef, red)
+        }
+    } */
+</style>
+
+<body>
+    <div class="box" id="box1">
+        <div class="size">
+            <h1 id="h1">1) which of the fllowing is a client site language....</h1>
+        </div>
+        <hr class="line">
+        <div class="size"><input id="java" type="radio" name="option" value ="a"><label for="java" value="a">java...</label></div>
+        <hr>
+        <div class="size"><input id="c" type="radio" name="option" value="b"><label for="c">c....</label></div>
+        <hr>
+        <div class="size"><input id="python" type="radio" name="option" value="c"><label for="python">python..</label></div>
+        <hr>
+        <div class="size"><input id="javascript" type="radio" name="option" value="d"><label for="javascript">javacript..</label>
+        </div>
+        <hr>
+        <button onclick="submit()" id="button">Submit</button>
+
+
+    </div>
+    <script>
+        let arry = [
+            {
+                question: "Which of the following is a client site language?",
+                a: 'Java',
+                b: "C",
+                c: 'Python',
+                d: 'JavaScript',
+                correct: 'd'
+            },
+            {
+                question: "What year was JavaScript launched?",
+                a: '1994',
+                b: "1995",
+                c: '1996',
+                d: 'none of the above',
+                correct: "b"
+            },
+            {
+                question: "What does HTML stand for?",
+                a: 'Hypertext Markup Language',
+                b: "Cascading Style Sheet",
+                c: 'Jason Object Notation',
+                d: 'Helicopters Terminals Motorboats Lamborginis',
+                correct: 'a'
+            },
+            {
+                question: "What does CSS stands for?",
+                a: 'Hypertext Markup Language',
+                b: "Cascading Style Sheet",
+                c: 'Jason Object Notation',
+                d: 'Helicopters Terminals Motorboats Lamborginis',
+                correct: 'c'
+            }
+
+        ]
+        let index = 0;
+        let right=0;
+        let wrong=0;
+        let label = document.querySelectorAll("label")
+
+        // console.log(label);
+
+
+        let radio = document.querySelectorAll("input")
+        // console.log(radio);
+        
+        let heading = document.getElementById("h1")
+
+        let loadquiz = () => {
+            let arrylength=arry.length; 
+            if (arrylength==index) {
+                let outer=document.getElementById("box1")
+                outer.innerHTML=`<h2>you have scored ${right}/${arrylength}</h2>`
+                return
+                
+            }
+            let data = arry[index];
+            heading.innerText = `${index + 1}) ${data.question}`;
+            label[0].innerText = data.a;
+            label[1].innerText = data.b;
+            label[2].innerText = data.c;
+            label[3].innerText = data.d;
+
+            // let data2= arry[1];
+            // heading.innerText = `${index + 2}) ${data2.question}`;
+            // label[0].innerText = data2.a;
+            // label[1].innerText = data2.b;
+            // label[2].innerText = data2.c;
+            // label[3].innerText = data2.d;
+        }
+
+
+        function submit() {
+            let answer = getanswer()
+            // console.log(answer);
+            let data = arry[index];
+            if (answer===data.correct) {
+                right++
+            }else{
+                wrong++
+            }
+            index++;
+            loadquiz()
+            radio.forEach((num)=>{
+                num.checked=false
+            })
+            
+        }
+
+
+        let getanswer= ()=>{
+            let ans1= "";
+                radio.forEach((num)=>{
+                    // console.log(num.checked);
+                    
+                   if (num.checked) {
+                    ans1=num.value
+                    
+                   }
+                    
+                })
+                return ans1
+
+            //     let newArray = Array.from(radio)
+            //     console.log(newArray);
+                
+            //  let radioval=newArray.filter((num)=>{
+            //         num.checked===true;
+            //         return num.value
+            //     })
+            //     console.log(radioval);
+                
+        }
+
+
+
+        loadquiz()
+    </script>
+</body>
+
+</html>

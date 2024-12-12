@@ -1,0 +1,84 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.box {
+    min-height: 300px;
+    width: 800px;
+    background-color: wheat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px; 
+}
+
+
+.size {
+    height: 40px;   
+    width: 100%;
+}
+
+body {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+button {
+    height: 34px;
+    /* width: 100%; */
+    font-size: larger;
+    border-radius: 10px;
+}
+
+button:hover {
+    animation: ani 1s linear infinite;
+}
+
+@keyframes ani {
+    10% {
+        background: linear-gradient(red, #0ef);
+    }
+
+    20% {
+        background: linear-gradient(#0ef, red)
+    }
+
+    30% {
+        background: linear-gradient(red, #0ef)
+    }
+
+    40% {
+        background: linear-gradient(#0ef, red)
+    }
+
+    50% {
+        background: linear-gradient(red, #0ef)
+    }
+
+    60% {
+        background: linear-gradient(#0ef, red)
+    }
+
+    70% {
+        background: linear-gradient(red, #0ef)
+    }
+
+    85% {
+        background: linear-gradient(#0ef, red)
+    }
+
+    90% {
+        background: linear-gradient(red, #0ef)
+    }
+
+    100% {
+        background: linear-gradient(#0ef, red)
+    }
+}
